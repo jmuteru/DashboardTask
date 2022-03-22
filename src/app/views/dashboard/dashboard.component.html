@@ -1,0 +1,299 @@
+<div class="animated fadeIn">
+  <div class="row mt-5" style="display: flex;justify-content: space-between; align-items: center;  ">
+    <h2 style="font-weight: bold; ;" class="col-sm-6 col-lg-3 ">Payments Method Dashboard</h2>
+    <mat-form-field >
+      <mat-label style="font-size: 15px;">Select payment method</mat-label>
+      <mat-chip-list #chipList class="row " style="position: absolute;"  >
+        <mat-chip >Airtel</mat-chip>
+        <mat-chip>M-PESA</mat-chip>
+        <mat-chip>DTB</mat-chip>
+      </mat-chip-list>
+      <input [matChipInputFor]="chipList" style="padding-bottom: 10px;">
+    </mat-form-field>
+
+          <mat-form-field class="example-form-field" appearance="fill"  >
+            <mat-label style="font-size: 18px;">From</mat-label>
+            <mat-date-range-input
+              [formGroup]="campaignOne"
+              [rangePicker]="campaignOnePicker"
+              [comparisonStart]="campaignTwo.value.start"
+              [comparisonEnd]="campaignTwo.value.end">
+              <input matStartDate placeholder="Start date" formControlName="start">
+              <input matEndDate placeholder="End date" formControlName="end">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
+            <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+          </mat-form-field>
+          
+          <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label style="font-size: 18px;">To</mat-label>
+            <mat-date-range-input
+              [formGroup]="campaignTwo"
+              [rangePicker]="campaignTwoPicker"
+              [comparisonStart]="campaignOne.value.start"
+              [comparisonEnd]="campaignOne.value.end">
+              <input matStartDate placeholder="Start date" formControlName="start">
+              <input matEndDate placeholder="End date" formControlName="end">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="campaignTwoPicker"></mat-datepicker-toggle>
+            <mat-date-range-picker #campaignTwoPicker></mat-date-range-picker>
+          </mat-form-field>
+          
+    <!-- delete chips -->
+   
+      
+          
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-primary bg-white" style="border-radius: 10px">
+        <div class="card-body pb-0">
+          <button type="button" class="btn btn-transparent p-0 float-left">
+            <i class="cil-chart-pie text-primary font-3xl p-3" ></i>
+          </button>
+          <div style="font-weight: bold">Total Payment Request</div>
+          <div class="text-value" style="color: black">1,000</div>
+          
+        </div>
+        <div class="chart-wrapper mt-3 mx-3" style="height: 40px"></div>
+      </div>
+    </div>
+    <!--/.col-->
+    <!-- Total Charge Req -->
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-success bg-white" style="border-radius: 10px">
+        <div class="card-body pb-0">
+          <div class="btn-group float-left bt " >
+            <button
+              type="button"
+              class="btn btn-transparent  p-0"
+            >
+              <!-- <i class="fa fa-pie-chart fa-thin" style="background: blue"></i> -->
+              <i class="cil-description text-success font-3xl p-3" ></i>
+
+            </button>
+          </div>
+          <div style="font-weight: bold">Total Charge Requests</div>
+          <div class="text-value" style="color: black">1,000</div>
+        </div>
+        <div class="chart-wrapper mt-3 mx-3" style="height: 40px"></div>
+      </div>
+    </div>
+    <!--/.col-->
+    <!-- Acceptance rate -->
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-warning bg-white" style="border-radius: 10px">
+        <div class="card-body pb-0">
+          <div class="btn-group float-left" >
+            <button
+              type="button"
+              class="btn btn-transparent  p-0"
+              
+            >
+            <i class="cil-description text-warning font-3xl p-2" ></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu></div>
+          </div>
+          <div style="font-weight: bold">Acceptance Rate</div>
+          <div class="text-value" style="color: black">10%</div>
+        </div>
+        <div class="chart-wrapper mt-3" style="height: 40px"></div>
+      </div>
+    </div>
+    <!--/.col-->
+
+    <!-- Acceptance Rate Trend -->
+
+      
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-danger bg-white" style="border-radius: 10px">
+        <div class="card-body pb-0">
+          <div class="btn-group float-left" >
+            <button
+              type="button"
+              class="btn btn-transparent  p-0"
+            
+            >
+            <i class="cil-description text-danger font-3xl p-1" ></i>
+            </button>
+          </div>
+          <div style="font-weight: bold">Success Rate</div>
+          <div class="text-value" style="color: black">20%</div>
+        </div>
+        <div class="chart-wrapper mt-3 mx-3" style="height: 40px"></div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
+  <div class="card" style="margin-top: 10px;">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-5">
+          <h4 class="card-title mb-0"><h2>Acceptance Rate Trend</h2></h4>
+        </div>
+        <!--/.col-->
+        <div class="col-sm-7 d-none d-md-block">
+          <!-- <input type="date" id="myDate" value="" class="float-right  mr-3 " style="height: 30px; border-radius: 5px;"> -->
+          <app-pickdate class="float-right  mr-3"  style="height: 30px; border-radius: 5px;" ></app-pickdate>
+ 
+        </div>
+
+        <!--/.col-->
+      </div>
+
+      <!--/.row-->
+      <!-- Chart -->
+      <div class="chart-wrapper" style="height: 300px; margin-top: 40px">
+        <canvas
+          baseChart
+          class="chart"
+          [datasets]="mainChartData"
+          [labels]="mainChartLabels"
+          [options]="mainChartOptions"
+          [colors]="mainChartColours"
+          [legend]="mainChartLegend"
+          [chartType]="mainChartType"
+        ></canvas>
+       
+
+      </div>
+
+ <!-- Success Rate Trend -->
+
+
+ <div class="card" style="margin-top: 150px;border: none;">
+  <div class="card-body" >
+    <div class="row">
+      <div class="col-sm-5">
+        <h4 class="card-title mb-0"><h2>Success Rate Trend</h2></h4>
+      </div>
+      <!--/.col-->
+      <div class="col-sm-7 d-none d-md-block">
+        <app-pickdate class="float-right  mr-3"  style="height: 30px; border-radius: 5px;" ></app-pickdate>
+
+      </div>
+
+      <!--/.col-->
+    </div>
+
+    <!--/.row-->
+    <!-- Chart -->
+    <div class="chart-wrapper" style="height: 300px; margin-top: 40px">
+      <canvas
+        baseChart
+        class="chart"
+        [datasets]="mainChartData"
+        [labels]="mainChartLabels"
+        [options]="mainChartOptions"
+        [colors]="mainChartColours"
+        [legend]="mainChartLegend"
+        [chartType]="mainChartType"
+      ></canvas>
+     
+
+    </div>
+    <div class="card-body " style="margin-top: 150px;">
+      <h2>Transactions</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Transaction ID</th>
+            <th>Created by</th>
+            <th>Source</th>
+            <th>Channel</th>
+            <th>Network</th>
+            <th>Amount(GHS)</th>
+            <th>Date </th>
+            <th>Network Ref</th>
+            <th>Narration</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1279111321</td>
+            <td>GEORGE KIHARA</td>
+            <td>2237896664</td>
+            <td>Mobile</td>
+            <td>MTN</td>
+            <td>7.00</td>
+            <td>2012/01/01</td>
+            <td>1164327867</td>
+            <td>Checkout Request</td>
+            <td>
+              <span class="badge badge-success">Success</span>
+            </td>
+          </tr>
+          <tr>
+            <td>1279111321</td>
+            <td>GEORGE KIHARA</td>
+            <td>2237896664</td>
+            <td>Mobile</td>
+            <td>MTN</td>
+            <td>7.00</td>
+            <td>2012/01/01</td>
+            <td>1164327867</td>
+            <td>Checkout Request</td>
+            <td>
+              <span class="badge badge-danger">Failed</span>
+            </td>
+          </tr>
+          <tr>
+            <td>1279111321</td>
+            <td>GEORGE KIHARA</td>
+            <td>2237896664</td>
+            <td>Mobile</td>
+            <td>MTN</td>
+            <td>7.00</td>
+            <td>2012/01/01</td>
+            <td>1164327867</td>
+            <td>Checkout Request</td>
+            <td>
+              <span class="badge badge-success">Success</span>
+            </td>
+          </tr>
+          <tr>
+            <td>1279111321</td>
+            <td>GEORGE KIHARA</td>
+            <td>2237896664</td>
+            <td>Mobile</td>
+            <td>MTN</td>
+            <td>7.00</td>
+            <td>2012/01/01</td>
+            <td>1164327867</td>
+            <td>Checkout Request</td>
+            <td>
+              <span class="badge badge-danger">Failed</span>
+            </td>
+          </tr>
+          <tr>
+            <td>1279111321</td>
+            <td>GEORGE KIHARA</td>
+            <td>2237896664</td>
+            <td>Mobile</td>
+            <td>MTN</td>
+            <td>7.00</td>
+            <td>2012/01/01</td>
+            <td>1164327867</td>
+            <td>Checkout Request</td>
+            <td>
+              <span class="badge badge-success">Failed</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+        <li class="page-item active">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">4</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
